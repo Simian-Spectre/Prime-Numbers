@@ -1,0 +1,25 @@
+import sys
+
+print('This program is designed to find all of the prime numbers within a given range.\n'
+      'Created by\n'
+      'Dane Miller\n\n\n')
+
+mn = int(input('What is the minimum of your range?\n'))
+if type(mn) != int:
+    print('Whoops! Try a number next time!')
+    sys.exit()
+mx = int(input('What is the maximum of your range?\n'))
+if type(mx) != int:
+    print('Whoops! Try a number next time!')
+    sys.exit()
+
+r = mx - mn
+c = 2.0
+
+if mn > mx:
+    print('Whoops! Try them in the other order next time!')
+    sys.exit()
+elif mn == mx:
+    print('Whoops! Try different numbers next time!')
+    sys.exit()
+else:
