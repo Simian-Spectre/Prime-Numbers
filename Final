@@ -7,45 +7,59 @@ print('\n'
       '*********************************Dane Miller****************************************\n'
       '************************************************************************************\n\n')
 
-mn = int(input('What is the minimum of your range?\n'))                                                                 # store user input for minimum of the range
+mn_str = input('What is the minimum of your range?\n')                                                                  # store user input for minimum of the range
+if mn_str.isnumeric():
+    mn = int(mn_str)
+else:
+    print('Whoops! Try a number next time')
+    sys.exit()
 if mn < 0:
     print('Whoops! Try a positive number next time!')                                                                   # stupid proofing
     sys.exit()
-mx = int(input('What is the maximum of your range?\n'))                                                                 # store user input for maximum of the range
+mx_str = (input('What is the maximum of your range?\n'))                                                                # store user input for maximum of the range
+if mx_str.isnumeric():
+    mx = int(mx_str)
+else:
+    print('Whoops! Try a number next time')
+    sys.exit()
+if mn < 0:
+    print('Whoops! Try a positive number next time!')                                                                   # stupid proofing
+    sys.exit()
 if mx < 0:
     print('Whoops! Try a positive number next time!')                                                                   # stupid proofing
     sys.exit()
-
-c = 2.0                                                                                                                 # c will be our divisor, I assigned it the value of 2 because 1 would be inefficient
-num = mn                                                                                                                # gave the value of mn to num, so that it can be increased as the program runs through numbers
-
 if mn > mx:                                                                                                             # stupid proofing
     print('Whoops! Try them in the other order next time!')
     sys.exit()
-elif mn == mx:
+if mn == mx:
     print('Whoops! Try different numbers next time!')                                                                   # stupid proofing
     sys.exit()
-else:
-    print('\n')
-    print('0 is weird\n1 is a unit')
-    while mn < mx:                                                                                                      # initializes the loop that searches for primes
-        if num < 2:
-            num += 1                                                                                                    # because 1 is a unit, and not a prime or composite
-        if num == c:
-            c += 1                                                                                                      # if num == c, something is wrong
-        stop = num / 2                                                                                                  # this will make the code much more efficient. it allows the program to move on sooner
-        rem = num % c                                                                                                   # store the remainder of num/c as rem
-        if rem == 0:                                                                                                    # basically says "if num is not prime:"
+
+print('\n')
+c = 2.0                                                                                                                 # c will be our divisor, I assigned it the value of 2 because 1 would be inefficient
+num = mn                                                                                                                # gave the value of mn to num, so that it can be increased as the program runs through numbers
+while True:                                                                                                             # initializes the loop that searches for primes
+    if num < 2:
+        num += 1                                                                                                        # because 1 is a unit, and not a prime or composite
+    if num == c:
+        c += 1                                                                                                          # if num == c, something is wrong
+    if num > 2:
+        if num % 2 == 0:
             print(str(num) + ' is composite')
-            num += 1                                                                                                    # moves on to the next number
-            c = 2.0                                                                                                     # resets c
-            if num > mx:                                                                                                # stops when you have finished the range
-                sys.exit()
-        else:                                                                                                           # basically says "if num has not yet been proven to be prime:"
-            c += 1                                                                                                      # increase c by 1. will run the same num again but with a greater divisor
-            if c > stop:                                                                                                # if the program has already finished all of the necessary repetitions
-                print('(: hey! ' + str(num) + ' is prime!           ' + str(num))                                       # declare that we do indeed have a prime number
-                num += 1                                                                                                # increase num to do the whole thing again
-                c = 2.0                                                                                                 # reset c
-            if num > mx:                                                                                                # check to see if we are done with the range yet
-                sys.exit()
+            num += 1
+    stop = num / 2                                                                                                      # this will make the code much more efficient. it allows the program to move on sooner
+    rem = num % c                                                                                                       # store the remainder of num/c as rem
+    if rem == 0:                                                                                                        # basically says "if num is not prime:"
+        print(str(num) + ' is composite')
+        num += 1                                                                                                        # moves on to the next number
+        c = 2.0                                                                                                         # resets c
+        if num > mx:                                                                                                    # stops when you have finished the range
+            sys.exit()
+    else:                                                                                                               # basically says "if num has not yet been proven to be prime:"
+        c += 1                                                                                                          # increase c by 1. will run the same num again but with a greater divisor
+        if c > stop:                                                                                                    # if the program has already finished all of the necessary repetitions
+            print('(: hey! ' + str(num) + ' is prime!           ' + str(num))                                           # declare that we do indeed have a prime number
+            num += 1                                                                                                    # increase num to do the whole thing again
+            c = 2.0                                                                                                     # reset c
+        if num > mx:                                                                                                    # check to see if we are done with the range yet
+            sys.exit()
